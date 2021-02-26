@@ -33,7 +33,7 @@ namespace Gravitáció
 			gravitációvektorok = new List<PointD>();
 		}
 
-		private void GravitációsKölcsönhatás(Bolygó másik)
+		private void GravitációsanKölcsönhat(Bolygó másik)
 		{
 			double dnégyzet = this.Hely.DistanceFromNégyzet(másik.Hely);
 			PointD kettőköztivektor = this.Hely - másik.Hely;
@@ -55,5 +55,39 @@ namespace Gravitáció
 			e.Graphics.FillEllipse(br, Hely.intX()-(int)(Tömeg/2), Hely.intY() - (int)(Tömeg / 2), (int)Tömeg, (int)Tömeg);
 		}
 
+		public static void Léptetések()
+		{
+
+			// lenullázzuk a bolygókra ható gravitációs vonzásokat
+			foreach (Bolygó b in lista)
+			{
+				b.gravitációvektorok = new List<PointD>();
+			}
+
+			// kiszámoljuk az új helyzet alapján minden bolygóra, hogy milyen erők hatnak rájuk
+			for (int i = 0; i < lista.Count; i++)
+			{
+
+				for (int j = i+1; j < lista.Count; j++)
+				{
+					lista[i].GravitációsanKölcsönhat(lista[j]);
+				}
+			}
+
+			// A bolygóra ható erőket összegezzük (a régi sebességükhöz adjuk hozzá az új gravitációs vektorokat)
+			foreach (Bolygó bolygó in lista)
+			{
+				foreach (PointD gravitációvektor in bolygó.gravitációvektorok)
+				{
+					bolygó.Sebességvektor += gravitációvektor;
+				}
+			}
+
+			// Végrehajtjuk a mozgásokat.
+			foreach (Bolygó bolygó in Bolygó.lista)
+			{
+				bolygó.Lép();
+			}
+		}
 	}
 }
