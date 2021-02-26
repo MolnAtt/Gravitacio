@@ -30,11 +30,11 @@ namespace Gravitáció
 
 			b.Click += Start_Click;
 
-			t.Interval = 100;
+			t.Interval = 16;
 			t.Tick += Tikk;
 
-			Bolygó pirosbolygó = new Bolygó(new PointD(100, 200), new PointD(1.41, Math.PI), Color.Red, 100);
-			Bolygó kékbolygó = new Bolygó(new PointD(500, 300), new PointD(3, -4), Color.Blue, 50);
+			Bolygó pirosbolygó = new Bolygó(new PointD(300, 200), new PointD(0, -1), Color.Red, 20000);
+			Bolygó kékbolygó = new Bolygó(new PointD(500, 300), new PointD(0, 1), Color.Blue, 10000);
 
 		}
 		int i = 0;

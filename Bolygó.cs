@@ -17,6 +17,7 @@ namespace Gravitáció
 		private PointD Sebességvektor;
 		public Color szín;
 		public double Tömeg;
+		public int Méret;
 		private SolidBrush br;
 		private List<PointD> gravitációvektorok;
 
@@ -28,6 +29,7 @@ namespace Gravitáció
 			Sebességvektor = v;
 			szín = sz;
 			Tömeg = m;
+			Méret = (int)Math.Round(Tömeg/1000);
 			lista.Add(this);
 			br = new SolidBrush(sz);
 			gravitációvektorok = new List<PointD>();
@@ -39,8 +41,8 @@ namespace Gravitáció
 			PointD kettőköztivektor = this.Hely - másik.Hely;
 			PointD kettőköztiegységvektor = (this.Hely - másik.Hely)/(Math.Sqrt(dnégyzet));
 
-			this.gravitációvektorok.Add(másik.Tömeg * kettőköztiegységvektor / dnégyzet);
-			másik.gravitációvektorok.Add(-1* this.Tömeg *kettőköztiegységvektor / dnégyzet); // -1 azért van itt, mert a másik irányba hat!
+			this.gravitációvektorok.Add(-1 * másik.Tömeg * kettőköztiegységvektor / dnégyzet);
+			másik.gravitációvektorok.Add(this.Tömeg *kettőköztiegységvektor / dnégyzet); // -1 azért van itt, mert a másik irányba hat!
 		}
 
 		// ITT TARTOTTUNK, még nem teszteltük, biztosan át kell még nézni.
@@ -52,7 +54,7 @@ namespace Gravitáció
 
 		public void Rajz(PaintEventArgs e)
 		{
-			e.Graphics.FillEllipse(br, Hely.intX()-(int)(Tömeg/2), Hely.intY() - (int)(Tömeg / 2), (int)Tömeg, (int)Tömeg);
+			e.Graphics.FillEllipse(br, Hely.intX()-(Méret/2), Hely.intY() - (Méret / 2), Méret, Méret);
 		}
 
 		public static void Léptetések()
