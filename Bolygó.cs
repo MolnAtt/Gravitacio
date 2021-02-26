@@ -29,7 +29,7 @@ namespace Gravitáció
 			Sebességvektor = v;
 			szín = sz;
 			Tömeg = m;
-			Méret = (int)Math.Round(Tömeg/1000);
+			Méret = (int)Math.Round(Math.Sqrt(Tömeg/10));
 			lista.Add(this);
 			br = new SolidBrush(sz);
 			gravitációvektorok = new List<PointD>();
