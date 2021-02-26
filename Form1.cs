@@ -42,10 +42,8 @@ namespace Gravitáció
 		{
 			l.Text=i++.ToString();
 
-			foreach (Bolygó bolygó in Bolygó.lista)
-			{
-				bolygó.Lép();
-			}			
+			Bolygó.Léptetések();
+
 			Invalidate();
 		}
 
