@@ -22,6 +22,7 @@ namespace Gravitáció
 		private List<PointD> gravitációvektorok;
 
 		// Formos megjelenítés a monitorpanelre
+		private GravSzim form;
 		private Label nev_label = new Label();
 		private Label h_label = new Label();
 		private TextBox h_textbox = new TextBox();
@@ -30,6 +31,8 @@ namespace Gravitáció
 		private Label m_label = new Label();
 		private TextBox m_textbox = new TextBox();
 		private PictureBox szin_picturebox = new PictureBox();
+		private Button törlőgomb = new Button();
+		private Control[] kontroltömb;
 
 		const int bolygóhelyfoglalás_monitoron = 30;
 		const int hezag_monitoron = 5;
@@ -37,8 +40,9 @@ namespace Gravitáció
 
 		public static List<Bolygó> lista = new List<Bolygó>();
 
-		public Bolygó(GravSzim f, string név, PointD hely, PointD v, Color szín, double tömeg)
+		public Bolygó(GravSzim form, string név, PointD hely, PointD v, Color szín, double tömeg)
 		{
+			this.form = form;
 			this.Név = név;
 			this.hely = hely;
 			this.velocity = v.ToDescartes();
@@ -51,9 +55,11 @@ namespace Gravitáció
 
 			#region  Monitorpanelhez tartozó rész beállításai:
 
-			if (Bolygó.lista.Count>2)
+			kontroltömb = new Control[]{ nev_label, h_label, h_textbox, v_label, v_textbox, m_label, m_textbox, szin_picturebox, törlőgomb };
+
+			if (Bolygó.lista.Count > 3)
 			{
-				f.monitorpanel.Height += bolygóhelyfoglalás_monitoron;
+				form.monitorpanel.Height += bolygóhelyfoglalás_monitoron;
 			}
 
 			Monitor_frissítése();
@@ -63,6 +69,7 @@ namespace Gravitáció
 			m_label.Text = "m = ";
 			m_textbox.Text = tömeg.ToString();
 			szin_picturebox.BackColor = szín;
+			törlőgomb.Text = "Töröl";
 
 
 			int monitoron_hova_X = 100;
@@ -85,7 +92,7 @@ namespace Gravitáció
 
 			monitoron_hova_X += h_label.Width + hezag_monitoron;
 
-			h_textbox.Width = 80;
+			h_textbox.Width = 100;
 			h_textbox.TextAlign = HorizontalAlignment.Center;
 			h_textbox.Location = new Point(monitoron_hova_X, monitoron_hova_Y);
 
@@ -98,7 +105,7 @@ namespace Gravitáció
 			
 			monitoron_hova_X += v_label.Width + hezag_monitoron;
 
-			v_textbox.Width = 80;
+			v_textbox.Width = 100;
 			v_textbox.TextAlign = HorizontalAlignment.Center;
 			v_textbox.Location = new Point(monitoron_hova_X, monitoron_hova_Y);
 
@@ -117,19 +124,51 @@ namespace Gravitáció
 
 			monitoron_hova_X += m_textbox.Width + hezag_monitoron;
 
-			f.monitorpanel.Controls.Add(nev_label);
-			f.monitorpanel.Controls.Add(szin_picturebox);
-			f.monitorpanel.Controls.Add(h_label);
-			f.monitorpanel.Controls.Add(h_textbox);
-			f.monitorpanel.Controls.Add(v_label);
-			f.monitorpanel.Controls.Add(v_textbox);
-			f.monitorpanel.Controls.Add(m_label);
-			f.monitorpanel.Controls.Add(m_textbox);
+			törlőgomb.Location = new Point(monitoron_hova_X, monitoron_hova_Y);
+
+			foreach (Control c in kontroltömb)
+			{
+				form.monitorpanel.Controls.Add(c);
+			}
 
 			monitoron_hova_Y += bolygóhelyfoglalás_monitoron;
 
+			törlőgomb.Click += Törlés;
+			
+
 			#endregion
-			f.Refresh();
+			form.Refresh();
+		}
+
+		private void Törlés(object sender, EventArgs e)
+		{
+			int ix = Bolygó.lista.IndexOf(this);
+			for (int i = ix+1; i < Bolygó.lista.Count; i++)
+			{
+				foreach (Control c in Bolygó.lista[i].kontroltömb)
+				{
+					c.Location = new Point(c.Location.X, c.Location.Y - bolygóhelyfoglalás_monitoron);
+					//MessageBox.Show($"hátrébb toltam {c}-t");
+				}
+			}
+
+			Bolygó.lista.RemoveAt(ix);
+			foreach (Control c in kontroltömb)
+			{
+				form.monitorpanel.Controls.Remove(c);
+			}
+
+			monitoron_hova_Y -= bolygóhelyfoglalás_monitoron;
+			if (Bolygó.lista.Count>2)
+			{
+				form.monitorpanel.Height -= bolygóhelyfoglalás_monitoron;
+			}
+
+			//			form.monitorpanel.Refresh();
+			form.Refresh();
+
+			GC.SuppressFinalize(this);
+
 		}
 
 		private void GravitációsanKölcsönhat(Bolygó másik)
@@ -191,9 +230,9 @@ namespace Gravitáció
 
 		public void Monitor_frissítése()
 		{
-			h_textbox.Text = $"({this.hely.X.ToString()};{this.hely.Y.ToString()})";
+			h_textbox.Text = $"({this.hely.X.ToString("0.00")};{this.hely.Y.ToString("0.00")})";
 			PointD v = this.velocity.ToPolar();
-			v_textbox.Text = $"({v.X};{v.Y})";
+			v_textbox.Text = $"({v.X.ToString("0.00")};{v.Y.ToString("0.00")})";
 		}
 		private bool monitor_szerkeszthető_e = true;
 		public bool Monitor_szerkeszthetőség

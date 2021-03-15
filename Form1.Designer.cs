@@ -30,7 +30,6 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			this.monitorpanel = new System.Windows.Forms.Panel();
-			this.label2 = new System.Windows.Forms.Label();
 			this.időlabel = new System.Windows.Forms.Label();
 			this.start = new System.Windows.Forms.Button();
 			this.ujb_panel = new System.Windows.Forms.Panel();
@@ -51,6 +50,7 @@
 			this.ujb_nevlabel = new System.Windows.Forms.Label();
 			this.szinvalasztas = new System.Windows.Forms.ColorDialog();
 			this.metronom = new System.Windows.Forms.Timer(this.components);
+			this.ujb_Ment = new System.Windows.Forms.Button();
 			this.monitorpanel.SuspendLayout();
 			this.ujb_panel.SuspendLayout();
 			this.SuspendLayout();
@@ -59,27 +59,18 @@
 			// 
 			this.monitorpanel.BackColor = System.Drawing.SystemColors.Control;
 			this.monitorpanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.monitorpanel.Controls.Add(this.label2);
+			this.monitorpanel.Controls.Add(this.ujb_Ment);
 			this.monitorpanel.Controls.Add(this.időlabel);
 			this.monitorpanel.Controls.Add(this.start);
 			this.monitorpanel.Location = new System.Drawing.Point(12, 12);
 			this.monitorpanel.Name = "monitorpanel";
-			this.monitorpanel.Size = new System.Drawing.Size(626, 83);
+			this.monitorpanel.Size = new System.Drawing.Size(768, 114);
 			this.monitorpanel.TabIndex = 0;
-			// 
-			// label2
-			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(22, 0);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(55, 17);
-			this.label2.TabIndex = 2;
-			this.label2.Text = "Monitor";
 			// 
 			// időlabel
 			// 
 			this.időlabel.AutoSize = true;
-			this.időlabel.Location = new System.Drawing.Point(40, 59);
+			this.időlabel.Location = new System.Drawing.Point(37, 81);
 			this.időlabel.Name = "időlabel";
 			this.időlabel.Size = new System.Drawing.Size(16, 17);
 			this.időlabel.TabIndex = 1;
@@ -87,7 +78,7 @@
 			// 
 			// start
 			// 
-			this.start.Location = new System.Drawing.Point(7, 26);
+			this.start.Location = new System.Drawing.Point(3, 3);
 			this.start.Name = "start";
 			this.start.Size = new System.Drawing.Size(89, 30);
 			this.start.TabIndex = 0;
@@ -248,6 +239,15 @@
 			this.metronom.Interval = 16;
 			this.metronom.Tick += new System.EventHandler(this.metronom_Tick);
 			// 
+			// ujb_Ment
+			// 
+			this.ujb_Ment.Location = new System.Drawing.Point(3, 39);
+			this.ujb_Ment.Name = "ujb_Ment";
+			this.ujb_Ment.Size = new System.Drawing.Size(89, 30);
+			this.ujb_Ment.TabIndex = 2;
+			this.ujb_Ment.Text = "MENT";
+			this.ujb_Ment.UseVisualStyleBackColor = true;
+			// 
 			// GravSzim
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -272,7 +272,6 @@
 		public System.Windows.Forms.Panel monitorpanel;
 		private System.Windows.Forms.Label időlabel;
 		private System.Windows.Forms.Button start;
-		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Panel ujb_panel;
 		private System.Windows.Forms.TextBox ujb_tomege;
 		private System.Windows.Forms.TextBox ujb_speed;
@@ -291,6 +290,7 @@
 		private System.Windows.Forms.ColorDialog szinvalasztas;
 		private System.Windows.Forms.TextBox szin_textBox;
 		private System.Windows.Forms.Timer metronom;
+		private System.Windows.Forms.Button ujb_Ment;
 	}
 }
 

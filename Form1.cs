@@ -60,6 +60,7 @@ namespace Gravitáció
 					b.Monitor_frissítése();
 					b.Monitor_szerkeszthetőség = true;
 				}
+				ujb_Ment.Enabled = true;
 			}
 			else
 			{
@@ -69,6 +70,7 @@ namespace Gravitáció
 				{
 					b.Monitor_szerkeszthetőség = false;
 				}
+				ujb_Ment.Enabled = false;
 			}
 		}
 	}
