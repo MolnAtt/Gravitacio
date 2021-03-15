@@ -48,7 +48,7 @@ namespace Gravitáció
 			this.velocity = v.ToDescartes();
 			this.szín = szín;
 			this.tömeg = tömeg;
-			this.méret = (int)Math.Round(Math.Sqrt(tömeg/10));
+			Méret_beállítása(tömeg);;
 			this.toll = new SolidBrush(szín);
 			gravitációvektorok = new List<PointD>();
 			lista.Add(this);
@@ -140,6 +140,19 @@ namespace Gravitáció
 			form.Refresh();
 		}
 
+		private void Méret_beállítása(double tömeg)
+		{
+			this.méret = (int)Math.Round(Math.Sqrt(tömeg / 10));
+		}
+
+		public void Módosítás()
+		{
+			hely = new PointD(h_textbox.Text);
+			velocity = new PointD(v_textbox.Text);
+			tömeg = int.Parse(m_textbox.Text);
+			Méret_beállítása(tömeg);
+			form.Refresh();
+		}
 		private void Törlés(object sender, EventArgs e)
 		{
 			int ix = Bolygó.lista.IndexOf(this);
@@ -232,7 +245,7 @@ namespace Gravitáció
 		{
 			h_textbox.Text = $"({this.hely.X.ToString("0.00")};{this.hely.Y.ToString("0.00")})";
 			PointD v = this.velocity.ToPolar();
-			v_textbox.Text = $"({v.X.ToString("0.00")};{v.Y.ToString("0.00")})";
+			v_textbox.Text = $"({v.X.ToString("0.00")}:{v.Y.ToString("0.00")})";
 		}
 		private bool monitor_szerkeszthető_e = true;
 		public bool Monitor_szerkeszthetőség

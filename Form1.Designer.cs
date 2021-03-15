@@ -30,6 +30,7 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			this.monitorpanel = new System.Windows.Forms.Panel();
+			this.ment = new System.Windows.Forms.Button();
 			this.időlabel = new System.Windows.Forms.Label();
 			this.start = new System.Windows.Forms.Button();
 			this.ujb_panel = new System.Windows.Forms.Panel();
@@ -50,7 +51,6 @@
 			this.ujb_nevlabel = new System.Windows.Forms.Label();
 			this.szinvalasztas = new System.Windows.Forms.ColorDialog();
 			this.metronom = new System.Windows.Forms.Timer(this.components);
-			this.ujb_Ment = new System.Windows.Forms.Button();
 			this.monitorpanel.SuspendLayout();
 			this.ujb_panel.SuspendLayout();
 			this.SuspendLayout();
@@ -59,13 +59,23 @@
 			// 
 			this.monitorpanel.BackColor = System.Drawing.SystemColors.Control;
 			this.monitorpanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.monitorpanel.Controls.Add(this.ujb_Ment);
+			this.monitorpanel.Controls.Add(this.ment);
 			this.monitorpanel.Controls.Add(this.időlabel);
 			this.monitorpanel.Controls.Add(this.start);
 			this.monitorpanel.Location = new System.Drawing.Point(12, 12);
 			this.monitorpanel.Name = "monitorpanel";
 			this.monitorpanel.Size = new System.Drawing.Size(768, 114);
 			this.monitorpanel.TabIndex = 0;
+			// 
+			// ment
+			// 
+			this.ment.Location = new System.Drawing.Point(3, 39);
+			this.ment.Name = "ment";
+			this.ment.Size = new System.Drawing.Size(89, 30);
+			this.ment.TabIndex = 2;
+			this.ment.Text = "MENT";
+			this.ment.UseVisualStyleBackColor = true;
+			this.ment.Click += new System.EventHandler(this.ment_Click);
 			// 
 			// időlabel
 			// 
@@ -236,22 +246,14 @@
 			// 
 			// metronom
 			// 
-			this.metronom.Interval = 16;
+			this.metronom.Interval = 10;
 			this.metronom.Tick += new System.EventHandler(this.metronom_Tick);
-			// 
-			// ujb_Ment
-			// 
-			this.ujb_Ment.Location = new System.Drawing.Point(3, 39);
-			this.ujb_Ment.Name = "ujb_Ment";
-			this.ujb_Ment.Size = new System.Drawing.Size(89, 30);
-			this.ujb_Ment.TabIndex = 2;
-			this.ujb_Ment.Text = "MENT";
-			this.ujb_Ment.UseVisualStyleBackColor = true;
 			// 
 			// GravSzim
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.AutoSize = true;
 			this.BackColor = System.Drawing.SystemColors.ControlLightLight;
 			this.ClientSize = new System.Drawing.Size(1528, 552);
 			this.Controls.Add(this.ujb_panel);
@@ -290,7 +292,7 @@
 		private System.Windows.Forms.ColorDialog szinvalasztas;
 		private System.Windows.Forms.TextBox szin_textBox;
 		private System.Windows.Forms.Timer metronom;
-		private System.Windows.Forms.Button ujb_Ment;
+		private System.Windows.Forms.Button ment;
 	}
 }
 

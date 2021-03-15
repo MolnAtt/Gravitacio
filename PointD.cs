@@ -17,6 +17,27 @@ namespace Gravitáció
 			this.Y = Y;
 		}
 
+		public PointD(string text)
+		{
+			if (text.Contains(';'))
+			{
+				string[] st = text.Split(';');
+				this.X = double.Parse(st[0].Trim(new char[] { '(' }));
+				this.Y = double.Parse(st[1].Trim(new char[] { ')' }));
+			}
+			else
+			{
+				string[] st = text.Split(':');
+				PointD konvertált = 
+					new PointD(
+						double.Parse(st[0].Trim(new char[] { '(' })), 
+						double.Parse(st[1].Trim(new char[] { ')' }))
+						).ToDescartes();
+				this.X = konvertált.X;
+				this.Y = konvertált.Y;
+			}
+		}
+
 		public static PointD operator +(PointD p, PointD q) => new PointD(p.X + q.X, p.Y + q.Y);
 		public static PointD operator -(PointD p, PointD q) => new PointD(p.X - q.X, p.Y - q.Y);
 		public static PointD operator /(PointD p, double a) => new PointD(p.X / a, p.Y / a);

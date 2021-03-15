@@ -15,7 +15,7 @@ namespace Gravitáció
 
 		public GravSzim()
 		{
-			//DoubleBuffered = true;
+			DoubleBuffered = true;
 			InitializeComponent();
 			ketyege = false;
 		}
@@ -35,8 +35,9 @@ namespace Gravitáció
 
 		private void Példabolygók_létrehozása_Click(object sender, EventArgs e)
 		{
-			new Bolygó(this, "Nap", new PointD(600, 200), new PointD(45, 1.5), Color.Red, 12000);
-			new Bolygó(this, "Föld", new PointD(800, 300), new PointD(225, 6), Color.Blue, 3000);
+			
+			new Bolygó(this, "Nap", new PointD(Width / 2, Height/2), new PointD(0, -2), Color.Red, 15000);
+			new Bolygó(this, "Föld", new PointD(Width / 2, Height / 2 + 180), new PointD(0, 10), Color.Blue, 3000);
 			new Bolygó(this, "Hold", new PointD(800, 350), new PointD(0, 3), Color.Gray, 300);
 		}
 
@@ -60,7 +61,8 @@ namespace Gravitáció
 					b.Monitor_frissítése();
 					b.Monitor_szerkeszthetőség = true;
 				}
-				ujb_Ment.Enabled = true;
+				ment.Enabled = true;
+				start.Text = "START";
 			}
 			else
 			{
@@ -70,8 +72,18 @@ namespace Gravitáció
 				{
 					b.Monitor_szerkeszthetőség = false;
 				}
-				ujb_Ment.Enabled = false;
+				ment.Enabled = false;
+				start.Text = "STOP";
 			}
+		}
+
+		private void ment_Click(object sender, EventArgs e)
+		{
+			foreach (Bolygó b in Bolygó.lista)
+			{
+				b.Módosítás();
+			}
+			Refresh();
 		}
 	}
 }
