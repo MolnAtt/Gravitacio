@@ -15,7 +15,6 @@ namespace Gravitáció
 		private string név;
 		public string Név => név;
 		private PointD hely;
-		//public Point Location;
 		private PointD velocity;
 		private Color szín;
 		private double tömeg;

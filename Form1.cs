@@ -17,9 +17,7 @@ namespace Gravitáció
 		{
 			//DoubleBuffered = true;
 			InitializeComponent();
-
-			Size = new Size(1500, 1000);
-
+			ketyege = false;
 		}
 
 		private void Form1_Paint(object sender, PaintEventArgs e)
@@ -30,22 +28,39 @@ namespace Gravitáció
 			}
 		}
 
-		private void button1_Click(object sender, EventArgs e)
+		private void Új_bolygó_létrehozása_Click(object sender, EventArgs e)
 		{
 
 		}
 
-		private void ujb_Peldabolygok_Click(object sender, EventArgs e)
+		private void Példabolygók_létrehozása_Click(object sender, EventArgs e)
 		{
-			Bolygó nap = new Bolygó("Nap", new PointD(600, 200), new PointD(1, -1), Color.Red, 12000);
-			Bolygó föld = new Bolygó("Föld", new PointD(800, 300), new PointD(-4, 4), Color.Blue, 3000);
-			Bolygó hold = new Bolygó("Hold", new PointD(800, 350), new PointD(3, 0), Color.Gray, 300);
+			new Bolygó("Nap", new PointD(600, 200), new PointD(1, -1), Color.Red, 12000);
+			new Bolygó("Föld", new PointD(800, 300), new PointD(-4, 4), Color.Blue, 3000);
+			new Bolygó("Hold", new PointD(800, 350), new PointD(3, 0), Color.Gray, 300);
 		}
 
+		int t = 0;
 		private void metronom_Tick(object sender, EventArgs e)
 		{
 			Bolygó.Léptetések();
 			Invalidate();
+			időlabel.Text = t++.ToString();
+		}
+
+		bool ketyege;
+		private void start_Click(object sender, EventArgs e)
+		{
+			if (ketyege)
+			{
+				metronom.Stop();
+				ketyege = false;
+			}
+			else
+			{
+				metronom.Start();
+				ketyege = true;
+			}
 		}
 	}
 }

@@ -31,7 +31,7 @@
 			this.components = new System.ComponentModel.Container();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.label2 = new System.Windows.Forms.Label();
-			this.label1 = new System.Windows.Forms.Label();
+			this.időlabel = new System.Windows.Forms.Label();
 			this.start = new System.Windows.Forms.Button();
 			this.panel2 = new System.Windows.Forms.Panel();
 			this.szin_textBox = new System.Windows.Forms.TextBox();
@@ -60,7 +60,7 @@
 			this.panel1.BackColor = System.Drawing.SystemColors.Control;
 			this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.panel1.Controls.Add(this.label2);
-			this.panel1.Controls.Add(this.label1);
+			this.panel1.Controls.Add(this.időlabel);
 			this.panel1.Controls.Add(this.start);
 			this.panel1.Location = new System.Drawing.Point(1345, 12);
 			this.panel1.Name = "panel1";
@@ -76,14 +76,14 @@
 			this.label2.TabIndex = 2;
 			this.label2.Text = "Monitor";
 			// 
-			// label1
+			// időlabel
 			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(102, 33);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(46, 17);
-			this.label1.TabIndex = 1;
-			this.label1.Text = "label1";
+			this.időlabel.AutoSize = true;
+			this.időlabel.Location = new System.Drawing.Point(102, 33);
+			this.időlabel.Name = "időlabel";
+			this.időlabel.Size = new System.Drawing.Size(16, 17);
+			this.időlabel.TabIndex = 1;
+			this.időlabel.Text = "0";
 			// 
 			// start
 			// 
@@ -93,6 +93,7 @@
 			this.start.TabIndex = 0;
 			this.start.Text = "START";
 			this.start.UseVisualStyleBackColor = true;
+			this.start.Click += new System.EventHandler(this.start_Click);
 			// 
 			// panel2
 			// 
@@ -143,7 +144,7 @@
 			this.ujb_Peldabolygok.TabIndex = 13;
 			this.ujb_Peldabolygok.Text = "Beépített példabolygók létrehozása";
 			this.ujb_Peldabolygok.UseVisualStyleBackColor = true;
-			this.ujb_Peldabolygok.Click += new System.EventHandler(this.ujb_Peldabolygok_Click);
+			this.ujb_Peldabolygok.Click += new System.EventHandler(this.Példabolygók_létrehozása_Click);
 			// 
 			// ujb_szinlabel
 			// 
@@ -162,7 +163,7 @@
 			this.ujb_ujbolygo.TabIndex = 11;
 			this.ujb_ujbolygo.Text = "Új bolygó létrehozása";
 			this.ujb_ujbolygo.UseVisualStyleBackColor = true;
-			this.ujb_ujbolygo.Click += new System.EventHandler(this.button1_Click);
+			this.ujb_ujbolygo.Click += new System.EventHandler(this.Új_bolygó_létrehozása_Click);
 			// 
 			// ujb_tomege
 			// 
@@ -269,7 +270,7 @@
 		#endregion
 
 		private System.Windows.Forms.Panel panel1;
-		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Label időlabel;
 		private System.Windows.Forms.Button start;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Panel panel2;
