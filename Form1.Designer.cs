@@ -58,6 +58,7 @@
 			// panel1
 			// 
 			this.panel1.BackColor = System.Drawing.SystemColors.Control;
+			this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.panel1.Controls.Add(this.label2);
 			this.panel1.Controls.Add(this.label1);
 			this.panel1.Controls.Add(this.start);
@@ -96,6 +97,7 @@
 			// panel2
 			// 
 			this.panel2.BackColor = System.Drawing.SystemColors.Control;
+			this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.panel2.Controls.Add(this.szin_textBox);
 			this.panel2.Controls.Add(this.ujb_cimlabel);
 			this.panel2.Controls.Add(this.ujb_Peldabolygok);
@@ -113,7 +115,7 @@
 			this.panel2.Controls.Add(this.ujb_nevlabel);
 			this.panel2.Location = new System.Drawing.Point(12, 12);
 			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(324, 248);
+			this.panel2.Size = new System.Drawing.Size(324, 261);
 			this.panel2.TabIndex = 1;
 			// 
 			// szin_textBox
@@ -135,7 +137,7 @@
 			// 
 			// ujb_Peldabolygok
 			// 
-			this.ujb_Peldabolygok.Location = new System.Drawing.Point(31, 204);
+			this.ujb_Peldabolygok.Location = new System.Drawing.Point(31, 212);
 			this.ujb_Peldabolygok.Name = "ujb_Peldabolygok";
 			this.ujb_Peldabolygok.Size = new System.Drawing.Size(277, 35);
 			this.ujb_Peldabolygok.TabIndex = 13;
@@ -154,7 +156,7 @@
 			// 
 			// ujb_ujbolygo
 			// 
-			this.ujb_ujbolygo.Location = new System.Drawing.Point(31, 163);
+			this.ujb_ujbolygo.Location = new System.Drawing.Point(31, 171);
 			this.ujb_ujbolygo.Name = "ujb_ujbolygo";
 			this.ujb_ujbolygo.Size = new System.Drawing.Size(277, 35);
 			this.ujb_ujbolygo.TabIndex = 11;

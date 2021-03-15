@@ -12,49 +12,52 @@ namespace Gravitáció
 {
 	class Bolygó
 	{
-		private PointD Hely;
+		private string név;
+		public string Név => név;
+		private PointD hely;
 		//public Point Location;
-		private PointD Sebességvektor;
-		public Color szín;
-		public double Tömeg;
-		public int Méret;
-		private SolidBrush br;
+		private PointD velocity;
+		private Color szín;
+		private double tömeg;
+		private int méret;
+		private SolidBrush toll;
 		private List<PointD> gravitációvektorok;
 
 		public static List<Bolygó> lista = new List<Bolygó>();
 
-		public Bolygó(PointD h, PointD v, Color sz, double m)
+		public Bolygó(string név, PointD hely, PointD velocity, Color szín, double tömeg)
 		{
-			Hely = h;
-			Sebességvektor = v;
-			szín = sz;
-			Tömeg = m;
-			Méret = (int)Math.Round(Math.Sqrt(Tömeg/10));
-			lista.Add(this);
-			br = new SolidBrush(sz);
+			this.név = név;
+			this.hely = hely;
+			this.velocity = velocity;
+			this.szín = szín;
+			this.tömeg = tömeg;
+			this.méret = (int)Math.Round(Math.Sqrt(tömeg/10));
+			this.toll = new SolidBrush(szín);
 			gravitációvektorok = new List<PointD>();
+			lista.Add(this);
 		}
 
 		private void GravitációsanKölcsönhat(Bolygó másik)
 		{
-			double dnégyzet = this.Hely.DistanceFromNégyzet(másik.Hely);
-			PointD kettőköztivektor = this.Hely - másik.Hely;
-			PointD kettőköztiegységvektor = (this.Hely - másik.Hely)/(Math.Sqrt(dnégyzet));
+			double dnégyzet = this.hely.DistanceFromNégyzet(másik.hely);
+			PointD kettőköztivektor = this.hely - másik.hely;
+			PointD kettőköztiegységvektor = (this.hely - másik.hely)/(Math.Sqrt(dnégyzet));
 
-			this.gravitációvektorok.Add(-1 * másik.Tömeg * kettőköztiegységvektor / dnégyzet);
-			másik.gravitációvektorok.Add(this.Tömeg *kettőköztiegységvektor / dnégyzet); // -1 azért van itt, mert a másik irányba hat!
+			this.gravitációvektorok.Add(-1 * másik.tömeg * kettőköztiegységvektor / dnégyzet);
+			másik.gravitációvektorok.Add(this.tömeg *kettőköztiegységvektor / dnégyzet); // -1 azért van itt, mert a másik irányba hat!
 		}
 
 		// ITT TARTOTTUNK, még nem teszteltük, biztosan át kell még nézni.
 
 		public void Lép()
 		{
-			Hely += Sebességvektor;
+			hely += velocity;
 		}
 
 		public void Rajz(PaintEventArgs e)
 		{
-			e.Graphics.FillEllipse(br, Hely.intX()-(Méret/2), Hely.intY() - (Méret / 2), Méret, Méret);
+			e.Graphics.FillEllipse(toll, hely.intX()-(méret/2), hely.intY() - (méret / 2), méret, méret);
 		}
 
 		public static void Léptetések()
@@ -81,7 +84,7 @@ namespace Gravitáció
 			{
 				foreach (PointD gravitációvektor in bolygó.gravitációvektorok)
 				{
-					bolygó.Sebességvektor += gravitációvektor;
+					bolygó.velocity += gravitációvektor;
 				}
 			}
 
