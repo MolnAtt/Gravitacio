@@ -142,7 +142,7 @@ namespace Gravitáció
 
 		private void Méret_beállítása(double tömeg)
 		{
-			this.méret = (int)Math.Round(Math.Sqrt(tömeg / 10));
+			this.méret = 2*(int)Math.Round(Math.Sqrt(tömeg / 10));
 		}
 
 		public void Módosítás()

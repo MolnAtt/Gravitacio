@@ -34,10 +34,8 @@
 			this.időlabel = new System.Windows.Forms.Label();
 			this.start = new System.Windows.Forms.Button();
 			this.ujb_panel = new System.Windows.Forms.Panel();
-			this.szin_textBox = new System.Windows.Forms.TextBox();
 			this.ujb_cimlabel = new System.Windows.Forms.Label();
 			this.ujb_Peldabolygok = new System.Windows.Forms.Button();
-			this.ujb_szinlabel = new System.Windows.Forms.Label();
 			this.ujb_ujbolygo = new System.Windows.Forms.Button();
 			this.ujb_tomege = new System.Windows.Forms.TextBox();
 			this.ujb_speed = new System.Windows.Forms.TextBox();
@@ -51,8 +49,11 @@
 			this.ujb_nevlabel = new System.Windows.Forms.Label();
 			this.szinvalasztas = new System.Windows.Forms.ColorDialog();
 			this.metronom = new System.Windows.Forms.Timer(this.components);
+			this.szinvalaszto_picturebox = new System.Windows.Forms.PictureBox();
+			this.szinvalaszto_gomb = new System.Windows.Forms.Button();
 			this.monitorpanel.SuspendLayout();
 			this.ujb_panel.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.szinvalaszto_picturebox)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// monitorpanel
@@ -100,10 +101,10 @@
 			// 
 			this.ujb_panel.BackColor = System.Drawing.SystemColors.Control;
 			this.ujb_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.ujb_panel.Controls.Add(this.szin_textBox);
+			this.ujb_panel.Controls.Add(this.szinvalaszto_gomb);
+			this.ujb_panel.Controls.Add(this.szinvalaszto_picturebox);
 			this.ujb_panel.Controls.Add(this.ujb_cimlabel);
 			this.ujb_panel.Controls.Add(this.ujb_Peldabolygok);
-			this.ujb_panel.Controls.Add(this.ujb_szinlabel);
 			this.ujb_panel.Controls.Add(this.ujb_ujbolygo);
 			this.ujb_panel.Controls.Add(this.ujb_tomege);
 			this.ujb_panel.Controls.Add(this.ujb_speed);
@@ -115,18 +116,11 @@
 			this.ujb_panel.Controls.Add(this.ujb_sebesseglabel);
 			this.ujb_panel.Controls.Add(this.ujb_helylabel);
 			this.ujb_panel.Controls.Add(this.ujb_nevlabel);
-			this.ujb_panel.Location = new System.Drawing.Point(1182, 12);
+			this.ujb_panel.Location = new System.Drawing.Point(16, 132);
 			this.ujb_panel.Name = "ujb_panel";
 			this.ujb_panel.Size = new System.Drawing.Size(324, 261);
 			this.ujb_panel.TabIndex = 1;
-			// 
-			// szin_textBox
-			// 
-			this.szin_textBox.Location = new System.Drawing.Point(208, 143);
-			this.szin_textBox.Name = "szin_textBox";
-			this.szin_textBox.Size = new System.Drawing.Size(100, 22);
-			this.szin_textBox.TabIndex = 15;
-			this.szin_textBox.Text = "Szín";
+			this.ujb_panel.SizeChanged += new System.EventHandler(this.ujb_panel_SizeChanged);
 			// 
 			// ujb_cimlabel
 			// 
@@ -139,7 +133,7 @@
 			// 
 			// ujb_Peldabolygok
 			// 
-			this.ujb_Peldabolygok.Location = new System.Drawing.Point(31, 212);
+			this.ujb_Peldabolygok.Location = new System.Drawing.Point(31, 221);
 			this.ujb_Peldabolygok.Name = "ujb_Peldabolygok";
 			this.ujb_Peldabolygok.Size = new System.Drawing.Size(277, 35);
 			this.ujb_Peldabolygok.TabIndex = 13;
@@ -147,18 +141,9 @@
 			this.ujb_Peldabolygok.UseVisualStyleBackColor = true;
 			this.ujb_Peldabolygok.Click += new System.EventHandler(this.Példabolygók_létrehozása_Click);
 			// 
-			// ujb_szinlabel
-			// 
-			this.ujb_szinlabel.AutoSize = true;
-			this.ujb_szinlabel.Location = new System.Drawing.Point(163, 143);
-			this.ujb_szinlabel.Name = "ujb_szinlabel";
-			this.ujb_szinlabel.Size = new System.Drawing.Size(39, 17);
-			this.ujb_szinlabel.TabIndex = 12;
-			this.ujb_szinlabel.Text = "Szín:";
-			// 
 			// ujb_ujbolygo
 			// 
-			this.ujb_ujbolygo.Location = new System.Drawing.Point(31, 171);
+			this.ujb_ujbolygo.Location = new System.Drawing.Point(31, 180);
 			this.ujb_ujbolygo.Name = "ujb_ujbolygo";
 			this.ujb_ujbolygo.Size = new System.Drawing.Size(277, 35);
 			this.ujb_ujbolygo.TabIndex = 11;
@@ -249,6 +234,26 @@
 			this.metronom.Interval = 10;
 			this.metronom.Tick += new System.EventHandler(this.metronom_Tick);
 			// 
+			// szinvalaszto_picturebox
+			// 
+			this.szinvalaszto_picturebox.BackColor = System.Drawing.SystemColors.ControlText;
+			this.szinvalaszto_picturebox.Location = new System.Drawing.Point(263, 146);
+			this.szinvalaszto_picturebox.Name = "szinvalaszto_picturebox";
+			this.szinvalaszto_picturebox.Size = new System.Drawing.Size(45, 28);
+			this.szinvalaszto_picturebox.TabIndex = 15;
+			this.szinvalaszto_picturebox.TabStop = false;
+			this.szinvalaszto_picturebox.Click += new System.EventHandler(this.szinvalaszto_picturebox_Click);
+			// 
+			// szinvalaszto_gomb
+			// 
+			this.szinvalaszto_gomb.Location = new System.Drawing.Point(208, 146);
+			this.szinvalaszto_gomb.Name = "szinvalaszto_gomb";
+			this.szinvalaszto_gomb.Size = new System.Drawing.Size(49, 28);
+			this.szinvalaszto_gomb.TabIndex = 16;
+			this.szinvalaszto_gomb.Text = "szín";
+			this.szinvalaszto_gomb.UseVisualStyleBackColor = true;
+			this.szinvalaszto_gomb.Click += new System.EventHandler(this.szinvalaszto_gomb_Click);
+			// 
 			// GravSzim
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -265,6 +270,7 @@
 			this.monitorpanel.PerformLayout();
 			this.ujb_panel.ResumeLayout(false);
 			this.ujb_panel.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.szinvalaszto_picturebox)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -286,13 +292,13 @@
 		private System.Windows.Forms.Label ujb_helylabel;
 		private System.Windows.Forms.Label ujb_nevlabel;
 		private System.Windows.Forms.Button ujb_ujbolygo;
-		private System.Windows.Forms.Label ujb_szinlabel;
 		private System.Windows.Forms.Button ujb_Peldabolygok;
 		private System.Windows.Forms.Label ujb_cimlabel;
 		private System.Windows.Forms.ColorDialog szinvalasztas;
-		private System.Windows.Forms.TextBox szin_textBox;
 		private System.Windows.Forms.Timer metronom;
 		private System.Windows.Forms.Button ment;
+		private System.Windows.Forms.Button szinvalaszto_gomb;
+		private System.Windows.Forms.PictureBox szinvalaszto_picturebox;
 	}
 }
 
