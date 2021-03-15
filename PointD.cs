@@ -8,8 +8,8 @@ namespace Gravitáció
 {
 	struct PointD
 	{
-		private double X { get; set; }
-		private double Y { get; set; }
+		public double X { get;}
+		public double Y { get;}
 
 		public PointD(double X, double Y)
 		{
@@ -17,13 +17,6 @@ namespace Gravitáció
 			this.Y = Y;
 		}
 
-		public PointD(double X, double Y, string koordinátatípus) // igazából mindegy, milyen string jön...
-		{
-			this.X = 0; // nem világos, hogy a C# most ehhez miért ragaszkodik, más projektben, pl Logo, nem ragaszkodott.
-			this.Y = 0;
-			this.X = Y * Cos(X);
-			this.Y = Y * Sin(X);
-		}
 		public static PointD operator +(PointD p, PointD q) => new PointD(p.X + q.X, p.Y + q.Y);
 		public static PointD operator -(PointD p, PointD q) => new PointD(p.X - q.X, p.Y - q.Y);
 		public static PointD operator /(PointD p, double a) => new PointD(p.X / a, p.Y / a);
@@ -41,13 +34,17 @@ namespace Gravitáció
 		public int intX() => (int)Math.Round(X);
 		public int intY() => (int)Math.Round(Y);
 
-		private double Deg2Rad(double x) => Math.PI * x / 180;
-		private double Rad2Deg(double x) => Math.PI * x / 180;
-		private double Sin(double x) => Math.Sin(Deg2Rad(x));
-		private double Cos(double x) => Math.Cos(Deg2Rad(x));
+		private static double Deg2Rad(double x) => Math.PI * x / 180;
+		private static double Rad2Deg(double x) => 180 * x / Math.PI;
+		private static double Sin(double x) => Math.Sin(Deg2Rad(x));
+		private static double Cos(double x) => Math.Cos(Deg2Rad(x));
+		private static double ArcTan(double y,double x) => Rad2Deg(Math.Atan2(y,x));
 
 
 		public double DistanceFrom(PointD P) { return (this - P).Hossz(); }
 		public double DistanceFromNégyzet(PointD P) { return (this - P).HosszNégyzet(); }
+
+		public PointD ToDescartes() => new PointD(Y * Cos(X), Y * Sin(X));
+		public PointD ToPolar() => new PointD(ArcTan(Y,X),Hossz());
 	}
 }

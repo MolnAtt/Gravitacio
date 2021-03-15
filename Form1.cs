@@ -35,9 +35,9 @@ namespace Gravitáció
 
 		private void Példabolygók_létrehozása_Click(object sender, EventArgs e)
 		{
-			new Bolygó("Nap", new PointD(600, 200), new PointD(1, -1), Color.Red, 12000);
-			new Bolygó("Föld", new PointD(800, 300), new PointD(-4, 4), Color.Blue, 3000);
-			new Bolygó("Hold", new PointD(800, 350), new PointD(3, 0), Color.Gray, 300);
+			new Bolygó(this, "Nap", new PointD(600, 200), new PointD(45, 1.5), Color.Red, 12000);
+			new Bolygó(this, "Föld", new PointD(800, 300), new PointD(225, 6), Color.Blue, 3000);
+			new Bolygó(this, "Hold", new PointD(800, 350), new PointD(0, 3), Color.Gray, 300);
 		}
 
 		int t = 0;
@@ -55,11 +55,20 @@ namespace Gravitáció
 			{
 				metronom.Stop();
 				ketyege = false;
+				foreach (Bolygó b in Bolygó.lista)
+				{
+					b.Monitor_frissítése();
+					b.Monitor_szerkeszthetőség = true;
+				}
 			}
 			else
 			{
 				metronom.Start();
 				ketyege = true;
+				foreach (Bolygó b in Bolygó.lista)
+				{
+					b.Monitor_szerkeszthetőség = false;
+				}
 			}
 		}
 	}

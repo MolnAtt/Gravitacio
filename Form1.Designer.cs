@@ -29,11 +29,11 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			this.panel1 = new System.Windows.Forms.Panel();
+			this.monitorpanel = new System.Windows.Forms.Panel();
 			this.label2 = new System.Windows.Forms.Label();
 			this.időlabel = new System.Windows.Forms.Label();
 			this.start = new System.Windows.Forms.Button();
-			this.panel2 = new System.Windows.Forms.Panel();
+			this.ujb_panel = new System.Windows.Forms.Panel();
 			this.szin_textBox = new System.Windows.Forms.TextBox();
 			this.ujb_cimlabel = new System.Windows.Forms.Label();
 			this.ujb_Peldabolygok = new System.Windows.Forms.Button();
@@ -51,26 +51,26 @@
 			this.ujb_nevlabel = new System.Windows.Forms.Label();
 			this.szinvalasztas = new System.Windows.Forms.ColorDialog();
 			this.metronom = new System.Windows.Forms.Timer(this.components);
-			this.panel1.SuspendLayout();
-			this.panel2.SuspendLayout();
+			this.monitorpanel.SuspendLayout();
+			this.ujb_panel.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// panel1
+			// monitorpanel
 			// 
-			this.panel1.BackColor = System.Drawing.SystemColors.Control;
-			this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.panel1.Controls.Add(this.label2);
-			this.panel1.Controls.Add(this.időlabel);
-			this.panel1.Controls.Add(this.start);
-			this.panel1.Location = new System.Drawing.Point(1345, 12);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(171, 69);
-			this.panel1.TabIndex = 0;
+			this.monitorpanel.BackColor = System.Drawing.SystemColors.Control;
+			this.monitorpanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.monitorpanel.Controls.Add(this.label2);
+			this.monitorpanel.Controls.Add(this.időlabel);
+			this.monitorpanel.Controls.Add(this.start);
+			this.monitorpanel.Location = new System.Drawing.Point(12, 12);
+			this.monitorpanel.Name = "monitorpanel";
+			this.monitorpanel.Size = new System.Drawing.Size(626, 83);
+			this.monitorpanel.TabIndex = 0;
 			// 
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(61, 6);
+			this.label2.Location = new System.Drawing.Point(22, 0);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(55, 17);
 			this.label2.TabIndex = 2;
@@ -79,7 +79,7 @@
 			// időlabel
 			// 
 			this.időlabel.AutoSize = true;
-			this.időlabel.Location = new System.Drawing.Point(102, 33);
+			this.időlabel.Location = new System.Drawing.Point(40, 59);
 			this.időlabel.Name = "időlabel";
 			this.időlabel.Size = new System.Drawing.Size(16, 17);
 			this.időlabel.TabIndex = 1;
@@ -95,29 +95,29 @@
 			this.start.UseVisualStyleBackColor = true;
 			this.start.Click += new System.EventHandler(this.start_Click);
 			// 
-			// panel2
+			// ujb_panel
 			// 
-			this.panel2.BackColor = System.Drawing.SystemColors.Control;
-			this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.panel2.Controls.Add(this.szin_textBox);
-			this.panel2.Controls.Add(this.ujb_cimlabel);
-			this.panel2.Controls.Add(this.ujb_Peldabolygok);
-			this.panel2.Controls.Add(this.ujb_szinlabel);
-			this.panel2.Controls.Add(this.ujb_ujbolygo);
-			this.panel2.Controls.Add(this.ujb_tomege);
-			this.panel2.Controls.Add(this.ujb_speed);
-			this.panel2.Controls.Add(this.ujb_irany);
-			this.panel2.Controls.Add(this.ujb_helyey);
-			this.panel2.Controls.Add(this.ujb_helyex);
-			this.panel2.Controls.Add(this.ujb_neve);
-			this.panel2.Controls.Add(this.ujb_tomeglabel);
-			this.panel2.Controls.Add(this.ujb_sebesseglabel);
-			this.panel2.Controls.Add(this.ujb_helylabel);
-			this.panel2.Controls.Add(this.ujb_nevlabel);
-			this.panel2.Location = new System.Drawing.Point(12, 12);
-			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(324, 261);
-			this.panel2.TabIndex = 1;
+			this.ujb_panel.BackColor = System.Drawing.SystemColors.Control;
+			this.ujb_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.ujb_panel.Controls.Add(this.szin_textBox);
+			this.ujb_panel.Controls.Add(this.ujb_cimlabel);
+			this.ujb_panel.Controls.Add(this.ujb_Peldabolygok);
+			this.ujb_panel.Controls.Add(this.ujb_szinlabel);
+			this.ujb_panel.Controls.Add(this.ujb_ujbolygo);
+			this.ujb_panel.Controls.Add(this.ujb_tomege);
+			this.ujb_panel.Controls.Add(this.ujb_speed);
+			this.ujb_panel.Controls.Add(this.ujb_irany);
+			this.ujb_panel.Controls.Add(this.ujb_helyey);
+			this.ujb_panel.Controls.Add(this.ujb_helyex);
+			this.ujb_panel.Controls.Add(this.ujb_neve);
+			this.ujb_panel.Controls.Add(this.ujb_tomeglabel);
+			this.ujb_panel.Controls.Add(this.ujb_sebesseglabel);
+			this.ujb_panel.Controls.Add(this.ujb_helylabel);
+			this.ujb_panel.Controls.Add(this.ujb_nevlabel);
+			this.ujb_panel.Location = new System.Drawing.Point(1182, 12);
+			this.ujb_panel.Name = "ujb_panel";
+			this.ujb_panel.Size = new System.Drawing.Size(324, 261);
+			this.ujb_panel.TabIndex = 1;
 			// 
 			// szin_textBox
 			// 
@@ -254,26 +254,26 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.ControlLightLight;
 			this.ClientSize = new System.Drawing.Size(1528, 552);
-			this.Controls.Add(this.panel2);
-			this.Controls.Add(this.panel1);
+			this.Controls.Add(this.ujb_panel);
+			this.Controls.Add(this.monitorpanel);
 			this.Name = "GravSzim";
 			this.Text = "Gravitációs szimuláció";
 			this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
-			this.panel1.ResumeLayout(false);
-			this.panel1.PerformLayout();
-			this.panel2.ResumeLayout(false);
-			this.panel2.PerformLayout();
+			this.monitorpanel.ResumeLayout(false);
+			this.monitorpanel.PerformLayout();
+			this.ujb_panel.ResumeLayout(false);
+			this.ujb_panel.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
 
 		#endregion
 
-		private System.Windows.Forms.Panel panel1;
+		public System.Windows.Forms.Panel monitorpanel;
 		private System.Windows.Forms.Label időlabel;
 		private System.Windows.Forms.Button start;
 		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Panel panel2;
+		private System.Windows.Forms.Panel ujb_panel;
 		private System.Windows.Forms.TextBox ujb_tomege;
 		private System.Windows.Forms.TextBox ujb_speed;
 		private System.Windows.Forms.TextBox ujb_irany;
